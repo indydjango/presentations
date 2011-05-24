@@ -1,0 +1,4 @@
+*.swp
+*.pyc
+*.nfs*
+local_settings.py

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div id="upload">
+    {% if form %}
+        <form id="form_upload" action="{% url repo.views.upload %}" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+        </form>
+        <div id="page-buttons">
+            <a id="button_submit" href="#" class="button"><span>{% trans 'Upload' %}</span></a>
+        </div>
+
+        <div id="errors">
+            <span id="error_text"></span>
+        </div>
+
+        <script type="text/javascript">
+            $("#button_submit").click(function(){
+                if ($("#id_filename").val() == ""){
+                    $("#error_text").html("{% trans 'You must select a file' %}");
+                } else {
+                    $("#form_upload").submit();
+                }
+            });
+        </script>
+    {% endif %}
+</div>
+{% endblock %}

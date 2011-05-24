@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div id="links">
+    <p>
+        {% trans "You can download your file using this link." %}
+    </p>
+    <p>
+        {% trans "It will be deleted after" %} {{max_file_age}} {% trans "minutes." %}
+    </p>
+    <p>
+        <a href="{{link}}">{{host}}{{link}}</a>
+    </p>
+</div>
+<div id="page-buttons">
+    <a href="/" class="button"><span>{% trans "Share another" %}</span></a>
+</div>
+{% endblock %}

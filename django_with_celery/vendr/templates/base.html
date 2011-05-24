@@ -1,0 +1,48 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+	<title>Vendr</title>
+	<meta name="description" content="Simple, secure file sharing" />
+
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/app.css" />
+    <link href='https://fonts.googleapis.com/css?family=Terminal+Dosis+Light' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="{{STATIC_URL}}js/app.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.js"></script>
+
+    {% block extrahead %}{% endblock %}
+
+</head>
+
+<body>
+<div id="header">
+    <div id="top_menu">
+        <ul>
+        </ul>
+    </div>
+</div>
+
+<div id="content">
+<div><span class="logo"><a href="/">Vendr</a></span><span class="logo-text">{% trans 'simple secure file sharing' %}</span></div>
+{% block content %}
+
+{% endblock %}
+</div>
+
+<div id="footer">
+    <span><a href="http://github.com/ehazlett/vendr" target="_blank">Vendr</a></span>
+</div>
+
+<script type="text/javascript">
+</script>
+
+<!-- analytics -->
+<script type="text/javascript">
+</script>
+
+</body>
+</html>

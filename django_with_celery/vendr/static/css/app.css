@@ -1,0 +1,74 @@
+body {
+    font-family: 'Terminal Dosis Light',arial,serif;
+    background-color: #dedede;
+    color: #1a1a1a;
+    font-size: 20pt;
+}
+a, a:hover {
+    color: #1e1e1e;
+    text-decoration: none;
+}
+.clear {
+    overflow: hidden;
+    width: 100%;
+}
+a.button {
+    background: transparent url('bg_button_a.gif') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+a.button span {
+    background: transparent url('bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+} 
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+} 
+#content {
+    background-color: #fafafa;
+    min-height: 325px;
+    width: 75%;
+    margin: 50px auto 0 auto;
+    padding: 10px;
+    text-align: center;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 1px solid #a1a1a1;
+}
+.logo {
+    font-size: 48pt;
+}
+.logo-text {
+    margin-left: 20px;
+    font-size: 18pt;
+}
+#errors {
+    color: #c82d2d;
+}
+#page-buttons {
+    margin-left: 60%;
+    text-align: center;
+}
+#footer {
+    font-size: 12pt;
+    width: 20%;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+#links a, #links a:hover {
+    color: #588cb3;
+}

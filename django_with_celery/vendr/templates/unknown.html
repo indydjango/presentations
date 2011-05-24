@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div>
+    <p>
+        {% trans "The file you are looking for could not be found." %}
+    </p>
+    <div id="page-buttons">
+        <a href="/" class="button"><span>{% trans "Share" %}</span></a>
+    </div>
+</div>
+{% endblock %}
