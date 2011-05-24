@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, include, url
 from piston.resource import Resource
 from api.handlers import NewsItemHandler
 
+# NOTE: this is a custom resource to allow remote POST (bypasses django csrf checking)
 class CsrfExemptResource(Resource):
     def __init__(self, handler, authentication=None):
         super(CsrfExemptResource, self).__init__(handler, authentication)
