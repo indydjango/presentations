@@ -212,23 +212,44 @@
   </div>
 
   <div class="step slide" data-x="2000" data-y="750">
-    <q>Blueprint: API</q>
+    <q>Blueprint Example: The App</q>
     <div>
-      Blueprint that separates an API layer from the rest of the application.
+      Main application
     </div>
-    <p>api.py:</p>
+    <p>application.py:</p>
     <pre>
       <code class="prettyprint">
-        from flask import Blueprint, render_template
+        from flask import Flask, request, render_template
+        from bp_api import api
+        app = Flask(__name__)
+        app.register_blueprint(api)
 
-        api = Blueprint('api', __name__)
-        @api.route("/api/version")
+        @app.route("/")
+        def index():
+            return render_template('index.html')
       </code>
     </pre>
   </div>
 
+  <div class="step slide" data-x="3000" data-y="750">
+    <q>Blueprint Example: API</q>
+    <div>
+      Blueprint that separates an API layer from the rest of the application.
+    </div>
+    <p>bp_api.py:</p>
+    <pre>
+      <code class="prettyprint">
+        from flask import Blueprint, jsonify
 
-  <div class="step slide" data-x="8000" data-y="-750">
+        api = Blueprint('api', __name__)
+        @api.route("/api/version")
+        def version():
+            return jsonify({'version': '0.1'})
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="1500">
     <q>Logging</q>
     <p>Comes with built-in Python logger</p>
     <pre>
@@ -238,6 +259,24 @@
         
         app.logger.debug('Bootstrap...')
         app.logger.error('Error occurred')
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="1500">
+    <q>Testing</q>
+    <pre>
+      <code class="prettyprint">
+        import application, unittest
+        class ApplicationTestCase(unittest.TestCase)
+            def setUp(self):
+                self.app = application.app.test_client()
+            
+            def testIndex(self):
+                resp = self.app.get("/")
+
+        if __name__=='__main__':
+            unittest.main()
       </code>
     </pre>
   </div>

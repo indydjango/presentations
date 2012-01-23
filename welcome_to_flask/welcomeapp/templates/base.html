@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Flask</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/app.css')}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Welcome to Flask</a>
+          <ul class="nav">
+            <li id="home"><a href="{{url_for('index')}}">Home</a></li>
+            <li id="about"><a href="{{url_for('about')}}">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <div class="page-header">
+          {% block page_header %}
+          {% endblock %}
+        </div>
+        {% block base_content %}
+        {% endblock %}
+      </div>
+
+      <footer>
+      </footer>
+  </body>
+
+</html>

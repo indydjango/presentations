@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block page_header %}
+<h1>About</h1>
+{% endblock %}
+
+{% block base_content %}
+<div class="row">
+  <div class="span10">
+    <div class="info">{{date}}: Running Python {{runtime}} on {{node}}</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $("li#about").addClass("active");
+  });
+</script>
+{% endblock %}
