@@ -19,7 +19,7 @@
         <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
   </div>
 
-  <div id="welcome" class="step" data-x="0" data-rotate="20" data-y="-2200" data-scale="1">
+  <div id="welcome" class="step" data-x="0" data-rotate="20" data-y="-2200" data-scale="1" data-z="1000">
     <q class="center">Welcome to <strong>Flask</strong></q>
     <img class="center" src="img/flask.png"/>
   </div>
@@ -33,6 +33,7 @@
       <p>* Templates via Jinja2 by default</p>
       <p>* Built-in debugger</p>
       <p>* Extensions</p>
+      <p>* Well documented</p>
       <p>* much more :)</p>
     </div>
   </div>
@@ -134,6 +135,100 @@
   </div>
 
   <div class="step slide" data-x="3000" data-y="-750">
+    <q>Filters</q>
+    <pre>
+      <code class="prettyprint">
+      @app.template_filter('date_from_timestamp')
+      def date_from_timestamp_filter(timestamp):
+          return datetime.fromtimestamp(timestamp)
+
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="0">
+    <q>...in the template</q>
+    <pre>
+      <code class="prettyprint">
+        &lt;span&gt;{{date|date_from_timestamp}}&lt;/span&gt;
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="0">
+    <q>Context Processors</q>
+    <pre>
+      <code class="prettyprint">
+        @app.context_processor
+        def inject_group():
+            return dict(session.get('group'))
+            
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="0">
+    <q class="spaced">The <strong>&quot;g&quot;</strong> object</q>
+    <div>
+      Special object that allows for shared data between requests, i.e. a database connection.
+    </div>
+
+    <div>
+      Gets handled properly like <strong>request</strong> and <strong>session</strong> (thread safe).
+    </div>
+  </div>
+
+  <div class="step slide" data-x="3000" data-y="0">
+    <q class="spaced">Before, After, and Teardown</q>
+    <div>
+      Helpful decorators that allow for customization of the request.  Useful for opening/closing database connections, etc.
+    </div>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="750">
+    <q>...</q>
+    <pre>
+      <code class="prettyprint">
+        @app.before_request
+        def before_request():
+            g.db = connect_to_db()
+
+        @app.teardown_request
+        def teardown_request():
+            g.db.close()
+
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="750">
+    <q class="spaced">Blueprints</q>
+    <div>
+      A Blueprint is an object that instructs Flask on how to create or extend an application.
+    </div>
+    <div>
+      Useful for building large apps or splitting an application into smaller, more manageable parts.
+    </div>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="750">
+    <q>Blueprint: API</q>
+    <div>
+      Blueprint that separates an API layer from the rest of the application.
+    </div>
+    <p>api.py:</p>
+    <pre>
+      <code class="prettyprint">
+        from flask import Blueprint, render_template
+
+        api = Blueprint('api', __name__)
+        @api.route("/api/version")
+      </code>
+    </pre>
+  </div>
+
+
+  <div class="step slide" data-x="8000" data-y="-750">
     <q>Logging</q>
     <p>Comes with built-in Python logger</p>
     <pre>
