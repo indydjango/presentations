@@ -1,0 +1,17 @@
+.center {
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+div.slide>div {
+  margin-bottom: 10px;
+}
+div#welcome img {
+  margin-top: 75px;
+}
+img.center {
+  display: block;
+  margin: 0 auto 0 auto;
+}
+pre {
+  margin: 0 0 0 0;
+}

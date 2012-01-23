@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome to Flask</title>
+    
+    <meta name="description" content="Introduction to the Python micro-framework, Flask">
+    <meta name="author" content="Evan Hazlett" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress.css" rel="stylesheet" />
+    <link href="css/prettify.css" rel="stylesheet" />
+    <link href="css/local.css" rel="stylesheet" />
+</head>
+<body onload="prettyPrint()">
+  <div id="impress" class="impress-not-supported">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+  </div>
+
+  <div id="welcome" class="step" data-x="0" data-rotate="20" data-y="-2200" data-scale="1">
+    <q class="center">Welcome to <strong>Flask</strong></q>
+    <img class="center" src="img/flask.png"/>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="-1500">
+    <q class="center">What is it?</q>
+    <div><a href="http://flask.pocoo.org/" rel="external" target="_flask">Flask</a> is a Python based microframework.</a></div>
+    <div>
+      <p>* Dead simple to use</p>
+      <p>* Simple url routing</p>
+      <p>* Templates via Jinja2 by default</p>
+      <p>* Built-in debugger</p>
+      <p>* Extensions</p>
+      <p>* much more :)</p>
+    </div>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="-1500">
+    <q>Diving right in...</q>
+      <pre>
+        <code class="prettyprint">
+        from flask import Flask
+        app = Flask(__name__)
+
+        @app.route("/")
+        def hello():
+          return "Hello World!"
+
+        if __name__ == "__main__":
+          app.run() 
+        </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="-1500">
+    <q>Decorator based routing</q>
+    <pre>
+      <code class="prettyprint">
+        @app.route("/about", methods=['GET', 'POST'])
+        def about():
+          return render_template('about.html')
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="3000" data-y="-1500">
+    <q>...with variable rules</q>
+    <pre>
+      <code class="prettyprint">
+        @app.route("/accounts/&lt;username&gt;/")
+        def user_account(username=None):
+          ...
+
+        @app.route("/accounts/&lt;int:user_id&gt;/")
+        def user_account(user_id=None):
+          ...
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="-750">
+    <q>URL Building</q>
+    <pre>
+      <code class="prettyprint">
+        from flask import Flask, url_for, redirect
+        app = Flask(__name__)
+
+        @app.route("/")
+        def index():
+          return "Hello world"
+        
+        @app.route("/login")
+        def login():
+          login()
+          redirect(url_for('index'))
+
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="-750">
+    <q>Templates</q>
+    <pre>
+      <code class="prettyprint">
+        from flask import render_template
+
+        @app.route("/about")
+        def about():
+          version = 'Release 0.1'
+          return render_template('about.html', version=version)
+
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="-750">
+    <q>...and the corresponding template</q>
+    <pre>
+      <code class="prettyprint">
+        &lt;!doctype html&gt;
+        &lt;title&gt;about&lt;/title&gt;
+
+        {% if version %}
+        &lt;p&gt;Version: {{version}}&lt;/p&gt;
+
+        {% else %}
+        &lt;p&gt;Version: unknown&lt;/p&gt;
+
+        {% endif %}
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="3000" data-y="-750">
+    <q>Logging</q>
+    <p>Comes with built-in Python logger</p>
+    <pre>
+      <code class="prettyprint">
+        from flask import Flask
+        app = Flask(__name__)
+        
+        app.logger.debug('Bootstrap...')
+        app.logger.error('Error occurred')
+      </code>
+    </pre>
+  </div>
+
+  <script src="js/impress.js"></script>
+  <script src="js/prettify.js"></script>
+</body>
+</html>
