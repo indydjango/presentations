@@ -21,3 +21,6 @@ pre {
 code.small {
   font-size: 10pt;
 }
+.spaced {
+  margin-top: 50px;
+}

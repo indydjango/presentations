@@ -25,7 +25,7 @@
   </div>
 
   <div class="step slide" data-x="0" data-y="-1500">
-    <q class="center">What is it?</q>
+    <q>What is it?</q>
     <div><a href="http://flask.pocoo.org/" rel="external" target="_flask">Flask</a> is a Python based microframework.</a></div>
     <div>
       <p>* Dead simple to use</p>
@@ -103,6 +103,7 @@
 
   <div class="step slide" data-x="1000" data-y="-750">
     <q>Templates</q>
+    <p>Flask uses Jinja2</p>
     <pre>
       <code class="prettyprint">
         from flask import render_template
@@ -250,6 +251,59 @@
   </div>
 
   <div class="step slide" data-x="0" data-y="1500">
+    <q>Sessions</q>
+    <div>
+      Allows for storing information from one request to another
+    </div>
+    <div>
+      Implemented on top of cookies and signed are cryptographically signed
+    </div>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="1500">
+    <q></q>
+    <pre>
+      <code class="prettyprint">
+        from flask import session, redirect, url_for
+
+        @app.route("/login", methods=['GET', 'POST'])
+        def login():
+            if request.method == 'POST':
+                session['username'] = request.form.get('username')
+                return redirect(url_for('index'))
+            return render_template('login.html')
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="1500">
+    <q>Method Based Views</q>
+    <div class="spaced">
+      <p>Similar to Django&#39;s class-based views</p>
+      <p>Very helpful when building RESTful APIs</p>
+    </div>
+  </div>
+
+  <div class="step slide" data-x="3000" data-y="1500">
+    <q></q>
+    <pre>
+      <code class="prettyprint">
+        from flask.views import MethodView
+        
+        class UserAPI(MethodView):
+            def get(self):
+                users = User.objects.all()
+
+            def post(self):
+                user = user.from_form_data(request.form)
+
+        app.add_url_rule('/users/', \
+            view_func=UserAPI.as_view('users'))
+      </code>
+    </pre>
+  </div>
+
+  <div class="step slide" data-x="0" data-y="2250">
     <q>Logging</q>
     <p>Comes with built-in Python logger</p>
     <pre>
@@ -263,7 +317,7 @@
     </pre>
   </div>
 
-  <div class="step slide" data-x="1000" data-y="1500">
+  <div class="step slide" data-x="1000" data-y="2250">
     <q>Testing</q>
     <pre>
       <code class="prettyprint">
@@ -280,6 +334,15 @@
             unittest.main()
       </code>
     </pre>
+  </div>
+
+  <div class="step slide" data-x="2000" data-y="2250">
+    <q>Extensions</q>
+    <p>* Flask-Assets (merging/minify)</p>
+    <p>* Flask-Babel (i18n/l10n support)</p>
+    <p>* Flask-Cache (caching)</p>
+    <p>* Flask-Login (account management)</p>
+    <p>* Flask-Mail (caching)</p>
   </div>
 
   <div class="step" data-x="0" data-y="5000" data-z="1000" data-rotate="75">
