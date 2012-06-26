@@ -1,0 +1,4 @@
+Django==1.4
+raven==1.9.4
+simplejson==2.4.0
+wsgiref==0.1.2
