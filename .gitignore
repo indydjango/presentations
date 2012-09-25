@@ -3,3 +3,4 @@
 *.nfs*
 local_settings.py
 *.db
+*un*
